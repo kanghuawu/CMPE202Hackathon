@@ -1,5 +1,6 @@
 
-public interface State{
+public interface State {
+  
   public void insertCard();
   public void ejectCard();
   public void takeNozzle();

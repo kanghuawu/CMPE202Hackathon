@@ -9,9 +9,9 @@ public class GasStation{
   public GasStation(){
     availableState = new AvailableState(this);
     paymentAuthorizationState = new PaymentAuthorizationState(this);
-    refuelState = RefuelState(this);
-    printReceiptState = PrintReceiptState(this);
-    notAvailableState = NotAvailableState(this);
+    refuelState = new RefuelState(this);
+    printReceiptState = new PrintReceiptState(this);
+    notAvailableState = new NotAvailableState(this);
     
     this.state = availableState;
   }
