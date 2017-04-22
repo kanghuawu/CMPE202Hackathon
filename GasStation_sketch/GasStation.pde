@@ -15,4 +15,8 @@ public class GasStation{
     
     this.state = availableState;
   }
+  
+  public void setState(State st){
+    this.state = st;
+  }
 }
