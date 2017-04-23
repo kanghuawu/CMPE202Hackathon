@@ -1,3 +1,11 @@
+/*
+  example:
+  GetCardFactory card = new GetCardFactory();
+  Card c = card.getCard("debit");
+  c.getAuthentication();
+  c.inputAuth();
+*/
+
 abstract class Card {
   protected int auth;
   protected String display;
