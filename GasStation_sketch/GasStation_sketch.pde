@@ -91,7 +91,6 @@ void mousePressed() {
   //fill(255);
   application.invoke(); //<>// //<>//
   //application.invoke(gs.getCurrentState());
-  application.invoke();
 }
 
   
