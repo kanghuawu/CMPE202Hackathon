@@ -11,7 +11,7 @@ public class Frame extends Composite {
   public void draw() {
     frame.draw();
     for (Component c: components) {
-        System.out.println(c.getClass().getName()); //<>// //<>//
+       //<>// //<>// //<>// //<>//
         c.draw();
     }
   }
@@ -35,7 +35,7 @@ public class Frame extends Composite {
      for (Component c: components) {
        c.draw();
        if (c instanceof Button) {
-          Button b = (Button) c; //<>// //<>//
+          Button b = (Button) c; //<>// //<>// //<>// //<>//
           if (b.btnName.equals("87") || b.btnName.equals("89") || b.btnName.equals("91")) {
             fill(255);  
             text(b.btnName, b.xPos +  (b.xPos + b.xLen)/2, b.yPos +(b.yPos+b.yLen)/2);

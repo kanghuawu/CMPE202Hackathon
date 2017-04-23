@@ -12,7 +12,7 @@ public class Leaf implements Component {
   }
   
   public void draw() {
-     setBackground(); //<>// //<>//
+     setBackground(); //<>// //<>// //<>// //<>//
      stroke(borderColor);
      rect(xPos, yPos, xLen, yLen);
      drawText();
@@ -25,6 +25,7 @@ public class Leaf implements Component {
   
   public void addChild(Component c) {}
   public void invoke() {}
+  public void isMouseOver(){}
   
 
 }

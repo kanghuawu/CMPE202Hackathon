@@ -3,15 +3,22 @@ public class Composite implements Component {
   
   public void draw() {
     for (Component c: components) {
-      c.draw(); //<>// //<>// //<>// //<>//
+      c.draw(); //<>// //<>// //<>// //<>// //<>// //<>//
     }
   }
   
   public void addChild(Component c) {
-    components.add(c);  //<>// //<>//
+    components.add(c);  //<>// //<>// //<>//
   }
   
   public void invoke() {
+    for (Component b: components) { //<>// //<>// //<>//
+        b.invoke();
+      
+    }
+  }
+  
+  public void isMouseOver() {
     for (Component b: components) { //<>// //<>//
         b.invoke();
       

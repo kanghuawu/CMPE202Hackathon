@@ -1,8 +1,11 @@
 public class GasTypeButton extends Button {
+  final private double PRICE_FOR_87_GAS = 3.05;
+  final private double PRICE_FOR_89_GAS = 3.25;
+  final private double PRICE_FOR_91_GAS = 3.35;
   public GasTypeButton(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
     super(xPos, yPos, xLen, yLen, c, btnName);
   }
-  /*
+  /* //<>//
    @Override
    public void draw() {
      setBackground(); //<>// //<>//
@@ -32,4 +35,13 @@ public class GasTypeButton extends Button {
      return 35; 
   }
   
+  public double getPrice() {
+    if (btnName.equals("87")) {
+       return PRICE_FOR_87_GAS;
+    } else if (btnName.equals("89")) {
+      return PRICE_FOR_89_GAS;
+    } else {
+      return PRICE_FOR_91_GAS;
+    }
+  }
 }

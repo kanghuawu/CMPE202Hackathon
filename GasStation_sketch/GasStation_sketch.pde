@@ -8,7 +8,7 @@ void setup() {
   
   //font = loadFont("BookAntiqua-48.vlw");
   //textFont(font, 50);
-   //<>//
+   //<>// //<>// //<>//
   backgroundColor =  color(255);
   application = new Composite();
   Frame applicationFrame =  new Frame(new Leaf(50, 50, 1100, 600, 0));
@@ -72,20 +72,26 @@ void setup() {
   opFrame.addChild(stop);
   application.addChild(opFrame);
   
-  noLoop();
+  //noLoop();
 }
 
 void draw() {
   fill(255);
   background(255);
-  application.draw(); //<>//
+  application.draw(); //<>// //<>// //<>//
+  application.isMouseOver();
+  
   
 }
 
 void mousePressed() {
-  loop();
-  fill(255);
-  application.invoke(); //<>//
+  //redraw(); //<>//
+  //loop();
+ 
+  //fill(255);
+  application.invoke(); //<>// //<>//
   //application.invoke(gs.getCurrentState());
-  
+  application.invoke();
 }
+
+  

@@ -1,6 +1,7 @@
 public class Button extends Leaf {
   protected String btnName;
   private Screen screen;
+  int count = 0;
   
   public Button(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
     super(xPos, yPos, xLen, yLen, c);
@@ -10,6 +11,16 @@ public class Button extends Leaf {
   public void setScreen(Screen screen) {
     this.screen = screen;
   }
+  
+  /*@Override
+  public void draw() {
+     setBackground(); //<>// //<>//
+     stroke(0);
+     rect(xPos, yPos, xLen, yLen);
+     clearBackground();
+     drawText();
+     
+  }*/
   
   
   public void drawText() {
@@ -35,8 +46,13 @@ public class Button extends Leaf {
   public void invoke() {
     if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen) {
         fill(0);
-        System.out.println(btnName);
-        screen.showText(btnName);
+        //System.out.println(btnName);
+        if (btnName.equals("Start")) {
+          screen.showText(str(count));
+          ++count;
+        } else {
+          screen.showText(btnName);
+        }
         //currentState.invoke();
     } 
   }
@@ -44,4 +60,13 @@ public class Button extends Leaf {
   public int getLabelSize() {
      return 10; 
   }
+  
+  /*public void isMouseOver() {
+    if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen && btnName.equals("Start")) {
+        fill(0);
+        //System.out.println(btnName);
+        screen.showText(str(count));
+        count++;
+    }
+  }*/
 }
