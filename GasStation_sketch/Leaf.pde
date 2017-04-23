@@ -12,17 +12,20 @@ public class Leaf implements Component {
   }
   
   public void draw() {
-     setBackground(); //<>//
+     setBackground(); //<>// //<>// //<>// //<>//
      stroke(borderColor);
      rect(xPos, yPos, xLen, yLen);
+     drawText();
      clearBackground();
   }
   
   public void setBackground() {};
   public void clearBackground() {};
+  public void drawText() {}
   
   public void addChild(Component c) {}
-  public void displayContent() {}
+  public void invoke() {}
+  public void isMouseOver(){}
   
 
 }
