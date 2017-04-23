@@ -27,6 +27,13 @@ public class NumPadButton extends Button {
     fill(255); 
   }*/
   
+  public boolean numPadClicked() {
+    if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen) {
+       return true;
+    } 
+    return false;
+  }
+  
   @Override
   public int getLabelSize() {
      return 35; 

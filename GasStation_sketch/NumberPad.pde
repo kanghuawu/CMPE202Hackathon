@@ -1,5 +1,6 @@
 // Derrick
-public class NumberPad {
+public class NumberPad{
+  private Boolean done;
   NumberpadState currentstate;
   
   NumberpadState noPin;
@@ -13,6 +14,7 @@ public class NumberPad {
   public NumberPad(String cardType) {
     
     this.card = cardType;
+      done = false;
       noPin = new NoPin(this);
       onePin = new OnePin(this);
       twoPin = new TwoPin(this);
@@ -21,6 +23,14 @@ public class NumberPad {
       fivePin = new FivePin(this);
       
       setState(noPin);
+  }
+  
+  public void setDone(Boolean status){
+    done = status;
+  }
+  
+  public Boolean getDone(){
+    return done; 
   }
      
   public Boolean checkDebit() {
@@ -33,6 +43,7 @@ public class NumberPad {
   public void insertDigit() {
     currentstate.insertDigit();
   }
+  
   public void backSpace() {
     currentstate.backspace();
   }
