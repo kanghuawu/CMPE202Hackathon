@@ -63,6 +63,7 @@ void setup() {
   fuelFrame.addChild(gas91);
   
   application.addChild(displayFrame);
+<<<<<<< Updated upstream
   
   FuelButton start = new FuelButton(830, 470, 100, 100, 0, "Start");
   start.setScreen(insScreen);
@@ -70,6 +71,24 @@ void setup() {
   FuelButton stop = new FuelButton(960, 470, 100, 100, 0, "Stop");
   stop.setScreen(insScreen);
   opFrame.addChild(stop);
+=======
+  ArrayList<NumPadButton> list = new ArrayList<NumPadButton>();
+  int xPos = 725;
+  int yPos = 30;
+  for (int i = 1; i <= 9; i++) {
+    if (i % 3 == 1) {
+       xPos = 725;
+       yPos += 75;
+    }
+    xPos += 100;
+    NumPadButton btn = new NumPadButton(xPos,yPos,50,50,0, Integer.toString(i));
+    displayFrame.addChild(btn);
+ 
+  }
+  NumPadButton zero = new NumPadButton(925,yPos +60 ,50,50,0, "0");
+  displayFrame.addChild(zero);
+  
+>>>>>>> Stashed changes
   application.addChild(opFrame);
   
   //noLoop();
