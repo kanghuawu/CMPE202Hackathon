@@ -10,7 +10,7 @@ public class Screen extends Leaf {
     font = loadFont("BookAntiqua-48.vlw");
     textFont(font, 12);
     fill(0);
-    text(displayMsg + " is Click", this.xPos + 10 , this.yPos + 15);
+    text(displayMsg, this.xPos+10 , this.yPos + 15);
     fill(255);
     redraw();
     //noLoop();

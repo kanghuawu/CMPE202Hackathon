@@ -20,7 +20,7 @@ public class Composite implements Component {
   
   public void isMouseOver() {
     for (Component b: components) { //<>// //<>//
-        b.invoke();
+        b.isMouseOver();
       
     }
   }

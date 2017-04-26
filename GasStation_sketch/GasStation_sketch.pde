@@ -63,6 +63,22 @@ void setup() {
   fuelFrame.addChild(gas91);
   
   application.addChild(displayFrame);
+      
+  int xPos = 725;    
+  int yPos = 30;    
+  for (int i = 1; i <= 9; i++) {    
+    if (i % 3 == 1) {    
+      xPos = 725;    
+      yPos += 65;    
+    }    
+    xPos += 100;    
+    NumPadButton numBtn = new NumPadButton(xPos,yPos,50,50,0, Integer.toString(i));    
+    numBtn.setScreen(insScreen);
+    displayFrame.addChild(numBtn);    
+    }    
+  NumPadButton zero = new NumPadButton(925,yPos +65 ,50,50,0, "0");    
+  zero.setScreen(insScreen);
+  displayFrame.addChild(zero);
   
   FuelButton start = new FuelButton(830, 470, 100, 100, 0, "Start");
   start.setScreen(insScreen);
@@ -88,9 +104,10 @@ void mousePressed() {
   //redraw(); //<>//
   //loop();
  
-  //fill(255);
-  //application.invoke(); //<>// //<>//
-  application.invoke();
+  //fill(255); //<>//
+  application.invoke(); //<>// //<>//
+  //application.invoke(gs.getCurrentState());
+
 }
 public class Button extends Leaf {
   protected String btnName;
