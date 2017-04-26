@@ -1,7 +1,7 @@
 color backgroundColor;
 Component application;
 PFont font;
-//GasStattion gs = new GasStation();
+GasStation gs = new GasStation();
 
 void setup() {
   size(1200, 700);
@@ -26,10 +26,10 @@ void setup() {
   Screen insScreen = new Screen(220, 100, 400, 250, 0);
   instructionFrame.addChild(insScreen);
   
-  Button btn1 = new Button(130, 110, 60, 40, 0, "Debit Card");
+  Button btn1 = new Button(130, 110, 60, 40, 0, "Button 1");
   btn1.setScreen(insScreen);
   instructionFrame.addChild(btn1);
-  Button btn2 = new Button(130, 170, 60, 40, 0, "Credit Card");
+  Button btn2 = new Button(130, 170, 60, 40, 0, "Button 2");
   btn2.setScreen(insScreen);
   instructionFrame.addChild(btn2);
   Button btn3 = new Button(130, 230, 60, 40, 40, "Button 3");
@@ -89,9 +89,92 @@ void mousePressed() {
   //loop();
  
   //fill(255);
-  application.invoke(); //<>// //<>//
-  //application.invoke(gs.getCurrentState());
+  //application.invoke(); //<>// //<>//
   application.invoke();
 }
-
+public class Button extends Leaf {
+  protected String btnName;
+  private Screen screen;
+  int count = 0;
   
+  public Button(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
+    super(xPos, yPos, xLen, yLen, c);
+    this.btnName = btnName;
+  }
+  
+  public void setScreen(Screen screen) {
+    this.screen = screen;
+  }
+  
+  /*@Override
+  public void draw() {
+     setBackground(); //<>// //<>//
+     stroke(0);
+     rect(xPos, yPos, xLen, yLen);
+     clearBackground();
+     drawText();
+     
+  }*/
+  
+  
+  public void drawText() {
+    font = loadFont("BookAntiqua-48.vlw");
+    textFont(font, getLabelSize());
+    fill(0);
+    text(btnName, this.xPos + this.xLen/2 - textWidth(btnName)/2 , this.yPos + this.yLen/2 + getLabelSize()/2);
+    fill(255);
+  }
+  
+  @Override
+  public void setBackground() {
+    fill(255); 
+  }
+  
+  
+  
+  @Override
+  public void clearBackground() {
+    fill(255);
+  }
+  
+  public void invoke() {
+    if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen) {
+        fill(0);
+        //System.out.println(btnName);
+        if (btnName.equals("Start")) {
+          screen.showText(str(count));
+          ++count;
+        } else {
+          screen.showText(btnName);
+        }
+        //currentState.invoke();
+        switch(btnName){
+          case "Button 1":
+            gs.buttom1();
+            break;
+          case "Button 2":
+            gs.buttom1();
+            break;
+          case "Button 3":
+            gs.buttom1();
+            break;
+          case "Button 4":
+            gs.buttom1();
+            break;
+        }
+    } 
+  }
+  
+  public int getLabelSize() {
+     return 10; 
+  }
+  
+  /*public void isMouseOver() {
+    if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen && btnName.equals("Start")) {
+        fill(0);
+        //System.out.println(btnName);
+        screen.showText(str(count));
+        count++;
+    }
+  }*/
+}
