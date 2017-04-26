@@ -4,7 +4,7 @@ public class Button extends Leaf {
   int count = 0;
   double price = 0;
   
-  public Button(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
+    public Button(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
     super(xPos, yPos, xLen, yLen, c);
     this.btnName = btnName;
   }
