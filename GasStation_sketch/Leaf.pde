@@ -4,7 +4,7 @@ public class Leaf implements Component {
   protected color borderColor;
   
   public Leaf(int xPos, int yPos, int xLen, int yLen, color c) {
-     this.xPos = xPos;
+    this.xPos = xPos;
     this.yPos = yPos;
     this.xLen = xLen;
     this.yLen = yLen;
@@ -12,7 +12,7 @@ public class Leaf implements Component {
   }
   
   public void draw() {
-     setBackground(); //<>// //<>// //<>// //<>//
+     setBackground(); //<>// //<>// //<>// //<>// //<>//
      stroke(borderColor);
      rect(xPos, yPos, xLen, yLen);
      drawText();
@@ -26,6 +26,4 @@ public class Leaf implements Component {
   public void addChild(Component c) {}
   public void invoke() {}
   public void isMouseOver(){}
-  
-
 }

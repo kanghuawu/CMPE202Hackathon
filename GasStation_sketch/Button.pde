@@ -1,82 +1,58 @@
-public class Button extends Leaf {
-  protected String btnName;
-  private Screen screen;
-  int count = 0;
-  double price = 0;
-  
-    public Button(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
-    super(xPos, yPos, xLen, yLen, c);
-    this.btnName = btnName;
+public class GasTypeButton extends Button {
+  final private double PRICE_FOR_87_GAS = 3.05;
+  final private double PRICE_FOR_89_GAS = 3.25;
+  final private double PRICE_FOR_91_GAS = 3.35;
+  public GasTypeButton(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
+    super(xPos, yPos, xLen, yLen, c, btnName);
   }
-  
-  public void setScreen(Screen screen) {
-    this.screen = screen;
-  }
-  
-  /*@Override
-  public void draw() {
+  /* //<>//
+   @Override
+   public void draw() {
      setBackground(); //<>// //<>//
-     stroke(0);
+     stroke(borderColor);
+     System.out.println("Gas Type button " + xPos + "," + yPos);
      rect(xPos, yPos, xLen, yLen);
-     clearBackground();
      drawText();
-     
+     clearBackground();
   }*/
-  
-  
+  /* //<>//
   public void drawText() {
     font = loadFont("BookAntiqua-48.vlw");
-    textFont(font, getLabelSize());
+    textFont(font, 35);
+    System.out.println("GasType button");
     fill(0);
-    text(btnName, this.xPos + this.xLen/2 - textWidth(btnName)/2 , this.yPos + this.yLen/2 + getLabelSize()/2);
+    text(btnName, this.xPos + this.xLen/2 - textWidth(btnName)/2 , this.yPos + this.yLen/2 + 17.5);
     fill(255);
-  }
+  }*/
   
-  @Override
+  /*@Override
   public void setBackground() {
     fill(255); 
-  }
-  
-  
+  }*/
   
   @Override
-  public void clearBackground() {
-    fill(255);
-  }
-  
-  public void invoke() {
-    if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen) {
-        fill(0);
-        //System.out.println(btnName);
-        //if (btnName.equals("Start")) {
-          //screen.showText(str(count));
-          //++count;
-        //} else {
-          screen.showText(btnName);
-        //}
-        //currentState.invoke();
-    } 
-  }
-  
   public int getLabelSize() {
-     return 10; 
+     return 35; 
   }
   
-  public void isMouseOver() {
-    if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen && btnName.equals("Start")) {
-        fill(0);
-        //System.out.println(btnName);
-        price = count*2.45;
-        StringBuilder sb = new StringBuilder();
-        sb.append("Gallons: ").append(count).append("\n");
-        sb.append("Price: " ).append(price).append("\n");
-        screen.showText(sb.toString());
-        
-        //screen.showText(String.valueOf(price), this.xPos, this.yPos + 50);
-        count++;
+  public double getPrice() {
+    if (btnName.equals("87")) {
+       return PRICE_FOR_87_GAS;
+    } else if (btnName.equals("89")) {
+      return PRICE_FOR_89_GAS;
     } else {
-      count = 0;
-      price = 0;
+      return PRICE_FOR_91_GAS;
     }
+  }
+}
+
+public class FuelButton extends Button {
+   public FuelButton(int xPos, int yPos, int xLen, int yLen, color c, String btnName) {
+    super(xPos, yPos, xLen, yLen, c, btnName);
+  }
+  
+  @Override
+  public int getLabelSize() {
+     return 25; 
   }
 }

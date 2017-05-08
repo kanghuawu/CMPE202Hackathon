@@ -20,11 +20,15 @@ public class AvailableState implements State{
   }
   public void buttom1(){
     System.out.println("You seleceted a debit card");
-    gs.setState(gs.getPaymentAuthorizationState());
+    State nxtstate = gs.getPaymentAuthorizationState();
+    gs.setState(nxtstate);
+    ((PaymentAuthorizationState) nxtstate).setCard("debit");
   }
   public void buttom2(){
     System.out.println("You seleceted a credit card");
-    gs.setState(gs.getPaymentAuthorizationState());
+    State nxtstate = gs.getPaymentAuthorizationState();
+    gs.setState(nxtstate);
+    ((PaymentAuthorizationState) nxtstate).setCard("credit");
   }
   public void buttom3(){}
   public void buttom4(){}
@@ -34,39 +38,43 @@ public class AvailableState implements State{
   public void refuelStart(){}
   public void refuelStop(){}
   public String toString(){
-    return "Please insert a debit or credit card";
+    return "Welcome! 202 Gas Station.\nPlease press Button 1 for debit or Button 2 for credit card";
   }
 }
 
 public class PaymentAuthorizationState implements State{
   GasStation gs;
   
+  
   public PaymentAuthorizationState(GasStation GS){
     this.gs = GS;
-  }
-  
-  public void buttom1(){
-    System.out.println("Please proceed to the pinpad");
-  }
-  public void buttom2(){
-    System.out.println("Please proceed to the pinpad");
-  }
-  public void buttom3(){
     
+  }
+  public void setCard(String card){
+    GetCardFactory type = new GetCardFactory();
+    Card c = type.getCard(card);
+    c.getAuthentication();
+    
+  }
+  public void buttom3(){   
     gs.setState(gs.getPickGasState());
   }
   public void buttom4(){
     System.out.println("Canceling your order. See you next time");
     gs.setState(gs.getAvailableState());
   }
+  public String toString(){
+    return "You've selected " + ".\n" + "Please proceed to the pinpad";
+  }
+  
+  
+  public void buttom1(){}
+  public void buttom2(){}
   public void gas87(){}
   public void gas89(){}
   public void gas91(){}
   public void refuelStart(){}
   public void refuelStop(){}
-  public String toString(){
-    return "Please proceed to the pinpad";
-  }
 }
 
 public class PickGasState implements State{

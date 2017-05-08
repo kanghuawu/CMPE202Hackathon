@@ -15,36 +15,42 @@ public class GasStation{
     
     state = availableState;
   }
-  
+  public void clickButton(String button_name){
+    switch (button_name.toLowerCase()){
+      case "button 1":
+        state.buttom1();
+        break;
+      case "button 2":
+        state.buttom2();
+        break;
+      case "button 3":
+        state.buttom3();
+        break;
+      case "button 4":
+        state.buttom4();
+        break;
+      case "button 87":
+        state.gas87();
+        break;
+      case "button 89":
+        state.gas89();
+        break;
+      case "button 91":
+        state.gas91();
+        break;
+      case "button Start":
+        state.refuelStart();
+        break;
+      case "button Stop":
+        state.refuelStop();
+        break;
+    }
+  }
+  public String getMessage(){
+    return state.toString();
+  }
   public void setState(State st){
     this.state = st;
-  }
-  public void buttom1(){
-    state.buttom1();
-  }
-  public void buttom2(){
-    state.buttom2();
-  }
-  public void buttom3(){
-    state.buttom3();
-  }
-  public void buttom4(){
-    state.buttom4();
-  }
-  public void gas87(){
-    state.gas87();
-  }
-  public void gas89(){
-    state.gas89();
-  }
-  public void gas91(){
-    state.gas91();
-  }
-  public void refuelStart(){
-    state.refuelStart();
-  }
-  public void refuelStop(){
-    state.refuelStop();
   }
   
   public State getAvailableState(){
