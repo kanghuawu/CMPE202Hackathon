@@ -168,7 +168,6 @@ public class Button extends Leaf {
         gs.clickButton(btnName);
         screen.showText(gs.getMessage());
        if (btnName.matches("\\d") && gs.getState() instanceof PaymentAuthorizationState) {
-         
         gs.numPad.insertDigit();
         System.out.println(btnName);
        }     

@@ -46,6 +46,9 @@ abstract class Card {
  public String getCardType(){
    return cardType;
  }
+ public int getAuthNumber() {
+   return auth; 
+ }
 }
 
 
