@@ -1,4 +1,26 @@
-// Derrick
+/*
+  example:
+  GetCardFactory card = new GetCardFactory();
+  Card c = card.getCard("debit");
+  c.getAuthentication();
+  c.inputAuth();
+*/
+class GetCardFactory {
+  public Card getCard(String type) {
+    if (type == null) {
+       return null; 
+    } else if (type.equalsIgnoreCase("debit")){
+        //insertCard() state
+        return new Debit();
+    } else if (type.equalsIgnoreCase("credit")){
+      //insertCard() state
+       return new Credit(); 
+    }
+    return null;
+  }
+}
+
+
 abstract class Card {
   protected int auth;
   protected String display;
@@ -18,4 +40,29 @@ abstract class Card {
     } 
     numPad.enter();
  }
+ public String getDisplay(){
+   return display;
+ }
+ public String getCardType(){
+   return cardType;
+ }
+}
+
+
+class Credit extends Card {
+    //@override
+    public void getAuthentication () {
+      auth = 5;
+      cardType = "credit";
+      display = "Enter your zip code.";
+   }
+}
+
+
+class Debit extends Card {
+   public void getAuthentication () {
+      auth = 4;
+      cardType = "debit";
+      display = "Enter your Pin number";
+   }
 }

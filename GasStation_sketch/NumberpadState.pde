@@ -96,6 +96,8 @@ public class FourPin implements NumberpadState{
    
    public void enter() {
       if (numPad.checkDebit()) {
+         numPad.setDone(true); 
+         numPad.setState(numPad.getNoPinState()); 
          System.out.println("Debit Card Accepted");
       }
       else {
@@ -121,6 +123,8 @@ public class FivePin implements NumberpadState{
    
    public void enter() {
       if (numPad.checkCredit()) {
+         numPad.setDone(true);
+         numPad.setState(numPad.getNoPinState()); 
          System.out.println("Credit Card Accepted");
       }
    }
