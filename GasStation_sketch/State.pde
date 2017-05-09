@@ -52,8 +52,10 @@ public class PaymentAuthorizationState implements State{
   }
   public void setCard(String card){
     GetCardFactory type = new GetCardFactory();
-    Card c = type.getCard(card);
-    c.getAuthentication();
+    gs.card = type.getCard(card);
+    gs.card.getAuthentication();
+    gs.numPad = new NumberPad(gs.card.getCardType());
+    
     
   }
   public void buttom3(){   

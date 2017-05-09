@@ -22,8 +22,8 @@ class GetCardFactory {
 
 
 abstract class Card {
+  public String display;
   protected int auth;
-  protected String display;
   protected String cardType;
   abstract void getAuthentication();
   

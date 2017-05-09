@@ -5,6 +5,8 @@ public class GasStation{
   private State refuelState;
   private State printReceiptState;
   private State state;
+  public Card card;
+  public NumberPad numPad;
   
   public GasStation(){
     availableState = new AvailableState(this);
@@ -48,6 +50,11 @@ public class GasStation{
   }
   public String getMessage(){
     return state.toString();
+  }
+ 
+  
+  public State getState() {
+     return this.state; 
   }
   public void setState(State st){
     this.state = st;

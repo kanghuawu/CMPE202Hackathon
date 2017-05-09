@@ -29,7 +29,7 @@ public class GasTypeButton extends Button {
   public void setBackground() {
     fill(255); 
   }*/
-  
+
   @Override
   public int getLabelSize() {
      return 35; 

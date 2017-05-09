@@ -76,6 +76,10 @@ void setup() {
     numBtn.setScreen(insScreen);
     displayFrame.addChild(numBtn);    
     }    
+    
+  NumPadButton enter = new NumPadButton (1025, yPos +65, 50,50,0, "Enter");
+  enter.setScreen(insScreen);
+  displayFrame.addChild(enter);
   NumPadButton zero = new NumPadButton(925,yPos +65 ,50,50,0, "0");    
   zero.setScreen(insScreen);
   displayFrame.addChild(zero);
@@ -162,7 +166,18 @@ public class Button extends Leaf {
         //}
         //currentState.invoke();
         gs.clickButton(btnName);
-        //screen.showText(gs.getMessage());
+        screen.showText(gs.getMessage());
+       if (btnName.matches("\\d") && gs.getState() instanceof PaymentAuthorizationState) {
+         
+        gs.numPad.insertDigit();
+        System.out.println(btnName);
+       }     
+       if (btnName == "Enter" ) {
+          gs.numPad.enter(); 
+          if (gs.numPad.getDone()) {
+            gs.setState(gs.getPickGasState());
+          }
+       }
     } 
   }
   
