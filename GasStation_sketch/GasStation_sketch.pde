@@ -75,7 +75,7 @@ void setup() {
     NumPadButton numBtn = new NumPadButton(xPos,yPos,50,50,0, Integer.toString(i));    
     numBtn.setScreen(insScreen);
     displayFrame.addChild(numBtn);    
-    }    
+  }    
     
   NumPadButton enter = new NumPadButton (1025, yPos +65, 50,50,0, "Enter");
   enter.setScreen(insScreen);
@@ -157,7 +157,7 @@ public class Button extends Leaf {
   public void invoke() {
     if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen) {
         fill(0);
-        //System.out.println(btnName);
+        System.out.println(btnName);
         //if (btnName.equals("Start")) {
           //screen.showText(str(count));
           //++count;

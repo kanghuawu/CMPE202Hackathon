@@ -19,13 +19,11 @@ public class AvailableState implements State{
     this.gs = GS;
   }
   public void buttom1(){
-    System.out.println("You seleceted a debit card");
     State nxtstate = gs.getPaymentAuthorizationState();
     gs.setState(nxtstate);
     ((PaymentAuthorizationState) nxtstate).setCard("debit");
   }
   public void buttom2(){
-    System.out.println("You seleceted a credit card");
     State nxtstate = gs.getPaymentAuthorizationState();
     gs.setState(nxtstate);
     ((PaymentAuthorizationState) nxtstate).setCard("credit");
@@ -44,13 +42,14 @@ public class AvailableState implements State{
 
 public class PaymentAuthorizationState implements State{
   GasStation gs;
-  
+  String card;
   
   public PaymentAuthorizationState(GasStation GS){
     this.gs = GS;
     
   }
   public void setCard(String card){
+    this.card = card;
     GetCardFactory type = new GetCardFactory();
     gs.card = type.getCard(card);
     gs.card.getAuthentication();
@@ -66,7 +65,7 @@ public class PaymentAuthorizationState implements State{
     gs.setState(gs.getAvailableState());
   }
   public String toString(){
-    return "You've selected " + ".\n" + "Please proceed to the pinpad";
+    return "You've selected " + this.card + ".\n" + "Please proceed to the pinpad";
   }
   
   
@@ -125,12 +124,12 @@ public class RefuelState implements State{
   public void gas89(){}
   public void gas91(){}
   public void refuelStart(){
+    System.out.println("starting....");
     hasStarted = true;
   }
   public void refuelStop(){
-    if(hasStarted){
-      gs.setState(gs.getPrintReceiptState());
-    }
+    System.out.println("stopping....");
+    gs.setState(gs.getPrintReceiptState());
   }
   public String toString(){
     return "Take the Nozzle and refuel your car.";
@@ -139,13 +138,18 @@ public class RefuelState implements State{
 
 public class PrintReceiptState implements State{
   GasStation gs;
-  
   public PrintReceiptState(GasStation GS){
     this.gs = GS;
   }
   
-  public void buttom1(){}
-  public void buttom2(){}
+  public void buttom1(){
+    gs.setState(gs.getAvailableState());
+    delay(2000);
+  }
+  public void buttom2(){
+    gs.setState(gs.getAvailableState());
+    delay(5000);
+  }
   public void buttom3(){}
   public void buttom4(){}
   public void gas87(){}
@@ -154,6 +158,6 @@ public class PrintReceiptState implements State{
   public void refuelStart(){}
   public void refuelStop(){}
   public String toString(){
-    return "Printing your receipt";
+    return "Do you want to print your receipt?\nSelect Button 1 for Yes Button 2 for No";
   }
 }

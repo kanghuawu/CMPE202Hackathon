@@ -5,8 +5,8 @@ public class GasStation{
   private State refuelState;
   private State printReceiptState;
   private State state;
-  public Card card;
-  public NumberPad numPad;
+  private Card card;
+  private NumberPad numPad;
   
   public GasStation(){
     availableState = new AvailableState(this);
@@ -18,6 +18,7 @@ public class GasStation{
     state = availableState;
   }
   public void clickButton(String button_name){
+    System.out.println("gs: " + button_name);
     switch (button_name.toLowerCase()){
       case "button 1":
         state.buttom1();
@@ -31,19 +32,19 @@ public class GasStation{
       case "button 4":
         state.buttom4();
         break;
-      case "button 87":
+      case "87":
         state.gas87();
         break;
-      case "button 89":
+      case "89":
         state.gas89();
         break;
-      case "button 91":
+      case "91":
         state.gas91();
         break;
-      case "button Start":
+      case "start":
         state.refuelStart();
         break;
-      case "button Stop":
+      case "stop":
         state.refuelStop();
         break;
     }
@@ -70,7 +71,7 @@ public class GasStation{
     return pickGasState;
   }
   public State getRefuelState(){
-    return paymentAuthorizationState;
+    return refuelState;
   }
   public State getPrintReceiptState(){
     return printReceiptState;
