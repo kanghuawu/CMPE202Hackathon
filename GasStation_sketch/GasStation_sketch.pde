@@ -167,13 +167,13 @@ public class Button extends Leaf {
         //currentState.invoke();
         gs.clickButton(btnName);
         screen.showText(gs.getMessage());
-       if (btnName.matches("\\d") && gs.getState() instanceof PaymentAuthorizationState) {
+       if (btnName.matches("\\d") && (gs.getState() instanceof PaymentAuthorizationState)) {
         gs.numPad.insertDigit();
         System.out.println(btnName);
        }     
-       if (btnName == "Enter" ) {
+       if (btnName == "Enter") {
           gs.numPad.enter(); 
-          if (gs.numPad.getDone()) {
+          if (gs.numPad.getDone() && (gs.getState() instanceof PaymentAuthorizationState)) {
             gs.setState(gs.getPickGasState());
           }
        }
