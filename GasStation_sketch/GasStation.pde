@@ -18,7 +18,7 @@ public class GasStation{
     state = availableState;
   }
   public void clickButton(String button_name){
-    System.out.println("gs: " + button_name);
+    //System.out.println("gs: " + button_name);
     switch (button_name.toLowerCase()){
       case "button 1":
         state.buttom1();
