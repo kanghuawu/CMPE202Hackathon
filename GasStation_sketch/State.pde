@@ -57,12 +57,9 @@ public class PaymentAuthorizationState implements State{
     
     
   }
-  public void buttom3(){   
-    gs.setState(gs.getPickGasState());
+  public void buttom3(){
   }
   public void buttom4(){
-    System.out.println("Canceling your order. See you next time");
-    gs.setState(gs.getAvailableState());
   }
   public String toString(){
     return "You've selected " + this.card + ".\n" + "Please proceed to the pinpad";

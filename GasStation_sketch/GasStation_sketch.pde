@@ -3,6 +3,7 @@ Component application;
 PFont font;
 GasStation gs = new GasStation();
 Screen insScreen;
+Frame displayFrame;
 void setup() {
   size(1200, 700);
   
@@ -13,7 +14,7 @@ void setup() {
   application = new Composite();
   Frame applicationFrame =  new Frame(new Leaf(50, 50, 1100, 600, 0));
   Frame instructionFrame = new Frame(new Leaf(100, 75, 650, 300, 0));
-  Frame displayFrame = new Frame(new Leaf (800, 75, 300, 300, 0));
+  displayFrame = new Frame(new Leaf (800, 75, 300, 300, 0));
   Frame fuelFrame = new Frame(new Leaf(100, 400, 650, 225, 0));
   Frame opFrame = new Frame(new Leaf(800, 400, 300, 225, 0));
   application.addChild(applicationFrame);
@@ -63,7 +64,7 @@ void setup() {
   fuelFrame.addChild(gas91);
   
   application.addChild(displayFrame);
-      
+
   int xPos = 725;    
   int yPos = 30;    
   for (int i = 1; i <= 9; i++) {    
@@ -76,13 +77,14 @@ void setup() {
     numBtn.setScreen(insScreen);
     displayFrame.addChild(numBtn);    
   }    
-    
+  
   NumPadButton enter = new NumPadButton (1025, yPos +65, 50,50,0, "Enter");
   enter.setScreen(insScreen);
   displayFrame.addChild(enter);
   NumPadButton zero = new NumPadButton(925,yPos +65 ,50,50,0, "0");    
   zero.setScreen(insScreen);
   displayFrame.addChild(zero);
+  
   
   FuelButton start = new FuelButton(830, 470, 100, 100, 0, "Start");
   start.setScreen(insScreen);
