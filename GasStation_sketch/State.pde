@@ -144,11 +144,12 @@ public class PrintReceiptState implements State{
   
   public void buttom1(){
     gs.setState(gs.getAvailableState());
+    System.out.println("Printing receipt...");
     delay(2000);
   }
   public void buttom2(){
     gs.setState(gs.getAvailableState());
-    delay(5000);
+    System.out.println("Returning to available state");
   }
   public void buttom3(){}
   public void buttom4(){}

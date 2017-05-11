@@ -39,18 +39,18 @@ void setup() {
   Button btn4 = new Button(130, 290, 60, 40, 0, "Button 4");
   btn4.setScreen(insScreen);
   instructionFrame.addChild(btn4);
-  //Button btn5 = new Button(660, 110, 60, 40, 0, "Button 5");
-  //btn5.setScreen(insScreen);
-  //instructionFrame.addChild(btn5);
-  //Button btn6 = new Button(660, 170, 60, 40, 0, "Receipt");
-  //btn6.setScreen(insScreen);
-  //instructionFrame.addChild(btn6);
-  //Button btn7 = new Button(660, 230, 60, 40, 40, "Cancel");
-  //btn7.setScreen(insScreen);
-  //instructionFrame.addChild(btn7);
-  //Button btn8 = new Button(660, 290, 60, 40, 0, "Done");
-  //btn8.setScreen(insScreen);
-  //instructionFrame.addChild(btn8);
+  Button btn5 = new Button(660, 110, 60, 40, 0, "Button 5");
+  btn5.setScreen(insScreen);
+  instructionFrame.addChild(btn5);
+  Button btn6 = new Button(660, 170, 60, 40, 0, "Button 6");
+  btn6.setScreen(insScreen);
+  instructionFrame.addChild(btn6);
+  Button btn7 = new Button(660, 230, 60, 40, 40, "Button 7");
+  btn7.setScreen(insScreen);
+  instructionFrame.addChild(btn7);
+  Button btn8 = new Button(660, 290, 60, 40, 0, "Button 8");
+  btn8.setScreen(insScreen);
+  instructionFrame.addChild(btn8);
   
   application.addChild(fuelFrame);
   GasTypeButton gas87 = new GasTypeButton(140, 450, 150, 150, 0, "87");
@@ -102,6 +102,7 @@ void draw() {
   background(255);
   application.draw(); //<>// //<>// //<>// //<>//
   application.isMouseOver();
+  //if gs isinstanceof
   insScreen.showText(gs.getMessage());
   
 }
@@ -169,7 +170,7 @@ public class Button extends Leaf {
         //}
         //currentState.invoke();
         gs.clickButton(btnName);
-        screen.showText(gs.getMessage());
+        //screen.showText(gs.getMessage());
        if (btnName.matches("\\d") && (gs.getState() instanceof PaymentAuthorizationState)) {
         gs.numPad.insertDigit();
         //System.out.println(btnName);
