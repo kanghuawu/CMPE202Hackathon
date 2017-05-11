@@ -30,7 +30,7 @@ abstract class Card {
   
  public void inputAuth() {
    //ejectCard() card state;
-    System.out.println(display);
+    System.out.println("display: "+display);
     
     System.out.println("This is a " + cardType);
     

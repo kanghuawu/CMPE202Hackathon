@@ -32,7 +32,6 @@ public class NumberPad{
   public Boolean getDone(){
     return done; 
   }
-     
   public Boolean checkDebit() {
     return card.equalsIgnoreCase("debit");
   }

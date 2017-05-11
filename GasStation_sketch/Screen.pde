@@ -13,7 +13,7 @@ public class Screen extends Leaf {
     text(displayMsg, this.xPos+10 , this.yPos + 15);
     fill(255);
     redraw();
-    noLoop();
+    //noLoop();
   }
   /*
   public void drawText() {

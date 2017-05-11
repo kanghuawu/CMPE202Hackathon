@@ -103,6 +103,7 @@ void draw() {
   application.draw(); //<>// //<>// //<>// //<>//
   application.isMouseOver();
   insScreen.showText(gs.getMessage());
+  
 }
 
 void mousePressed() {
@@ -159,7 +160,7 @@ public class Button extends Leaf {
   public void invoke() {
     if (this.xPos <= mouseX && mouseX <= this.xPos + this.xLen && this.yPos <= mouseY && mouseY <= this.yPos + this.yLen) {
         fill(0);
-        System.out.println(btnName);
+        //System.out.println(btnName);
         //if (btnName.equals("Start")) {
           //screen.showText(str(count));
           //++count;
@@ -171,7 +172,7 @@ public class Button extends Leaf {
         screen.showText(gs.getMessage());
        if (btnName.matches("\\d") && (gs.getState() instanceof PaymentAuthorizationState)) {
         gs.numPad.insertDigit();
-        System.out.println(btnName);
+        //System.out.println(btnName);
        }     
        if (btnName == "Enter") {
           gs.numPad.enter(); 

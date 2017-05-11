@@ -62,7 +62,10 @@ public class PaymentAuthorizationState implements State{
   public void buttom4(){
   }
   public String toString(){
-    return "You've selected " + this.card + ".\n" + "Please proceed to the pinpad";
+    if(!gs.numPad.getDone())
+      return "You've selected " + this.card + "card.\n" + "Please proceed to the pinpad\n"+gs.card.display;
+    else
+      return "Please press enter";
   }
   
   
