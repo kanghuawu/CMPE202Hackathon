@@ -4,6 +4,7 @@ public class GasStation{
   private State pickGasState;
   private State refuelState;
   private State printReceiptState;
+  private State takeReceiptState;
   private State state;
   public Card card;
   public NumberPad numPad;
@@ -14,6 +15,7 @@ public class GasStation{
     pickGasState = new PickGasState(this);
     refuelState = new RefuelState(this);
     printReceiptState = new PrintReceiptState(this);
+    takeReceiptState = new TakeReceiptState(this);
     state = availableState;
   }
   public void clickButton(String button_name){
@@ -73,5 +75,8 @@ public class GasStation{
   }
   public State getPrintReceiptState(){
     return printReceiptState;
+  }
+  public State getTakeReceiptState(){
+    return takeReceiptState;
   }
 }

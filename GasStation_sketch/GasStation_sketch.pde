@@ -77,7 +77,9 @@ void setup() {
     numBtn.setScreen(insScreen);
     displayFrame.addChild(numBtn);    
   }    
-  
+  NumPadButton back = new NumPadButton (825, yPos +65, 50,50,0, "Back");
+  back.setScreen(insScreen);
+  displayFrame.addChild(back);
   NumPadButton enter = new NumPadButton (1025, yPos +65, 50,50,0, "Enter");
   enter.setScreen(insScreen);
   displayFrame.addChild(enter);
@@ -96,7 +98,7 @@ void setup() {
   
   //noLoop();
 }
-
+boolean displayforfivesecond = false;
 void draw() {
   fill(255);
   background(255);
@@ -104,7 +106,16 @@ void draw() {
   application.isMouseOver();
   //if gs isinstanceof
   insScreen.showText(gs.getMessage());
-  
+  if(gs.getState() instanceof TakeReceiptState){
+    if(displayforfivesecond) {
+      gs.setState(gs.getAvailableState());
+      displayforfivesecond = false;
+      delay(3000);
+    }else{
+      displayforfivesecond = true;
+      delay(3000);
+    }
+  }
 }
 
 void mousePressed() {
@@ -175,11 +186,13 @@ public class Button extends Leaf {
         gs.numPad.insertDigit();
         //System.out.println(btnName);
        }     
-       if (btnName == "Enter") {
+       if (btnName.equals( "Enter")) {
           gs.numPad.enter(); 
           if (gs.numPad.getDone() && (gs.getState() instanceof PaymentAuthorizationState)) {
             gs.setState(gs.getPickGasState());
           }
+       }else if (btnName.equals( "Back")){
+         gs.numPad.backSpace();
        }
     } 
   }

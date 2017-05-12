@@ -4,6 +4,7 @@ public interface NumberpadState {
   public void insertDigit();
   public void backspace();
   public void enter();
+  public String getRemainDigits();
 }
 
 public class NoPin implements NumberpadState{
@@ -20,6 +21,13 @@ public class NoPin implements NumberpadState{
    }
    public void enter() {
      System.out.println("Not enough number");
+   }
+   public String getRemainDigits(){
+     if(numPad.card.equalsIgnoreCase("debit")){
+       return "4";
+     }else{
+       return "5";
+     }
    }
 }
 
@@ -39,6 +47,13 @@ public class OnePin implements NumberpadState{
    public void enter() {
      System.out.println("Not enough number");
    }
+   public String getRemainDigits(){
+     if(numPad.card.equalsIgnoreCase("debit")){
+       return "3";
+     }else{
+       return "4";
+     }
+   }
 }
 
 public class TwoPin implements NumberpadState{
@@ -56,6 +71,13 @@ public class TwoPin implements NumberpadState{
    public void enter() {
      System.out.println("Not enough number");
    }
+   public String getRemainDigits(){
+     if(numPad.card.equalsIgnoreCase("debit")){
+       return "2";
+     }else{
+       return "3";
+     }
+   }
 }
 
 public class ThreePin implements NumberpadState{
@@ -65,6 +87,8 @@ public class ThreePin implements NumberpadState{
      this.numPad = n;
    }
    public void insertDigit() {
+     if (numPad.checkDebit())
+       numPad.setDone(true);
      numPad.setState(numPad.getFourPinState());
    }
    public void backspace() {
@@ -73,6 +97,13 @@ public class ThreePin implements NumberpadState{
    
    public void enter() {
      System.out.println("Not enough number");
+   }
+   public String getRemainDigits(){
+     if(numPad.card.equalsIgnoreCase("debit")){
+       return "1";
+     }else{
+       return "2";
+     }
    }
 }
 
@@ -84,6 +115,7 @@ public class FourPin implements NumberpadState{
    }
    public void insertDigit() {
       if (numPad.checkCredit()) {
+        numPad.setDone(true);
         numPad.setState(numPad.getFivePinState()); 
       }
       else if (numPad.checkDebit()) {
@@ -96,13 +128,20 @@ public class FourPin implements NumberpadState{
    
    public void enter() {
       if (numPad.checkDebit()) {
-         numPad.setDone(true); 
+          
          numPad.setState(numPad.getNoPinState()); 
          System.out.println("Debit Card Accepted");
       }
       else {
           System.out.println("Enter more digit");
       }
+   }
+   public String getRemainDigits(){
+     if(numPad.card.equalsIgnoreCase("debit")){
+       return "0";
+     }else{
+       return "1";
+     }
    }
 }
 
@@ -123,9 +162,15 @@ public class FivePin implements NumberpadState{
    
    public void enter() {
       if (numPad.checkCredit()) {
-         numPad.setDone(true);
          numPad.setState(numPad.getNoPinState()); 
          System.out.println("Credit Card Accepted");
       }
+   }
+   public String getRemainDigits(){
+     if(numPad.card.equalsIgnoreCase("debit")){
+       return "0";
+     }else{
+       return "0";
+     }
    }
 }

@@ -43,7 +43,6 @@ public class AvailableState implements State{
 public class PaymentAuthorizationState implements State{
   GasStation gs;
   String card;
-  
   public PaymentAuthorizationState(GasStation GS){
     this.gs = GS;
     
@@ -62,8 +61,9 @@ public class PaymentAuthorizationState implements State{
   public void buttom4(){
   }
   public String toString(){
+    //System.out.println(!gs.numPad.getDone());
     if(!gs.numPad.getDone())
-      return "You've selected " + this.card + "card.\n" + "Please proceed to the pinpad\n"+gs.card.display;
+      return "You've selected " + this.card + "card.\n" + "Please proceed to the pinpad\n"+gs.card.display+"\nPlease enter: " + gs.numPad.getState().getRemainDigits() + " digits";
     else
       return "Please press enter";
   }
@@ -80,7 +80,7 @@ public class PaymentAuthorizationState implements State{
 
 public class PickGasState implements State{
   GasStation gs;
-  
+  public String gastype = "";
   public PickGasState(GasStation GS){
     this.gs = GS;
   }
@@ -90,21 +90,24 @@ public class PickGasState implements State{
   public void buttom3(){}
   public void buttom4(){}
   public void gas87(){
+    gastype = "You pick gasoline 87";
     System.out.println("You pick gasoline 87");
     gs.setState(gs.getRefuelState());
   }
   public void gas89(){
+    gastype = "You pick gasoline 89";
     System.out.println("You pick gasoline 89");
     gs.setState(gs.getRefuelState());
   }
   public void gas91(){
+    gastype = "You pick gasoline 91";
     System.out.println("You pick gasoline 91");
     gs.setState(gs.getRefuelState());
   }
   public void refuelStart(){}
   public void refuelStop(){}
   public String toString(){
-    return "Please select a gasoline type";
+      return "Please select a gasoline type";
   }
 }
 
@@ -132,7 +135,7 @@ public class RefuelState implements State{
     gs.setState(gs.getPrintReceiptState());
   }
   public String toString(){
-    return "Take the Nozzle and refuel your car.";
+    return ((PickGasState) gs.getPickGasState()).gastype + "\nTake the Nozzle and refuel your car.";
   }
 }
 
@@ -143,9 +146,9 @@ public class PrintReceiptState implements State{
   }
   
   public void buttom1(){
-    gs.setState(gs.getAvailableState());
+    gs.setState(gs.getTakeReceiptState());
     System.out.println("Printing receipt...");
-    delay(2000);
+    //delay(2000);
   }
   public void buttom2(){
     gs.setState(gs.getAvailableState());
@@ -160,5 +163,27 @@ public class PrintReceiptState implements State{
   public void refuelStop(){}
   public String toString(){
     return "Do you want to print your receipt?\nSelect Button 1 for Yes Button 2 for No";
+  }
+}
+
+public class TakeReceiptState implements State{
+  GasStation gs;
+  public TakeReceiptState(GasStation GS){
+    this.gs = GS;
+  }
+  
+  public void buttom1(){
+  }
+  public void buttom2(){
+  }
+  public void buttom3(){}
+  public void buttom4(){}
+  public void gas87(){}
+  public void gas89(){}
+  public void gas91(){}
+  public void refuelStart(){}
+  public void refuelStop(){}
+  public String toString(){
+    return "Thank you please take your receipt";
   }
 }

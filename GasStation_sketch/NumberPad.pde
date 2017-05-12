@@ -52,7 +52,9 @@ public class NumberPad{
   public void setState(NumberpadState s) {
     this.currentstate = s;
   }
-  
+  public NumberpadState getState(){
+    return currentstate; 
+  }
   public NumberpadState getNoPinState() {
     return noPin;
   }
